@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% extends "index.html"%}
+{% block body_block %}
+<button type="button" id="btn1" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Show</button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'teacher:showStudentByTeacher' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Year:</label>
+                        <input type="text" class="form-control" id="recipient-name" name="year">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Semister:</label>
+                        <input type="text" class="form-control" id="recipient-name" name="semister">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Department:</label>
+                        <select type="text" class="form-control form-control-user" id="exampleInputPassword"
+                            name="department">
+
+                            <option required>Select Department</option>
+                            <option value="CE">CE</option>
+                            <option value="EEE">EEE</option>
+                            <option value="ME">ME</option>
+                            <option value="CSE">CSE</option>
+                            <option value="CHE">CHE</option>
+                            <option value="MME">MME</option>
+                            <option value="IPE">IPE</option>
+                            <option value="ARCH">ARCH</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Subject:</label>
+                        <select type="text" class="form-control form-control-user" id="exampleInputPassword"
+                            name="subject">
+
+                            <option required>Select Subject</option>
+                            {% for obj in subject %}
+                            <option value="{{obj.course_code}}">{{obj.course_name}}</option>   
+                            {% endfor %}               
+                        </select>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Send message</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>
+{% endblock%}

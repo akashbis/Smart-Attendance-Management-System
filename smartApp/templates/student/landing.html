@@ -1,0 +1,21 @@
+{% load static %}
+<html>
+    <head>
+        <title>
+            ML
+        </title>
+    </head>
+
+    <body>
+        <h1>{{text}}</h1>
+        <h1>{{name}}</h1>
+        {% for row in student %}
+        <p>{{row.id}}</p>
+        <p>{{row.student_id}}</p>
+        <p>{{row.first_name}}</p>
+        <p>{{row.last_name}}</p>
+        <p>{{row.date}}</p>
+        {% endfor %}
+        <img src = '{% static "images/image.jpg"%}'>
+    </body>
+</html>

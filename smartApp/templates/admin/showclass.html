@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% extends "index.html"%}
+{% block body_block %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+</head>
+
+<body class="" style="background: #edf2f7;">
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+    <link rel="stylesheet"
+        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+
+
+    <section class=" py-1 bg-blueGray-50">
+        <div class="w-full lg:w-10/12 px-4 mx-auto mt-6">
+            <div
+                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+
+                    <div class="rounded-t bg-white mb-0 px-6 py-6">
+                        <div class="text-center flex justify-between">
+                            <h6 class="text-blueGray-700 text-xl font-bold">
+                                Show All Course
+                            </h6>
+                            <a href = "{% url 'subadmin:addclass' %}"><button
+                                class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                type="button">
+                                Create new class
+                            </button></a>
+                        </div>
+                    </div>
+
+
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Course Code
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Course Name
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Course Teacher
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Department
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Year
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Semister
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        
+                                        <span class="sr-only">Edit</span>
+                                        <span class="sr-only">Delete</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for obj in class %}
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{obj.course_code}}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{obj.course_name}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{obj.course_teacher}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{obj.department}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{obj.year}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{obj.semister}}
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <a href="/subadmin/editclass/{{obj.id}}"
+                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                        <a href="/subadmin/deleteclass/{{obj.id}}"
+                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+                                    </td>
+                                {% endfor %}
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+
+            </div>
+
+        </div>
+    </section>
+</body>
+{% endblock%}ß
